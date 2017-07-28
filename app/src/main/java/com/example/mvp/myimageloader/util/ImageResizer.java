@@ -24,7 +24,7 @@ public class ImageResizer {
      * @param reqHeight 展示时的高度
      * @return
      */
-    public Bitmap decodeSampleBitmapFromResoureces(Resources res, int resId, int reqWidth, int reqHeight) {
+    public static Bitmap decodeSampleBitmapFromResoureces(Resources res, int resId, int reqWidth, int reqHeight) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         //设置为true则，BitmapFactory则只会解析图片的宽/高信息，不会真正的去加载图片
         options.inJustDecodeBounds = true;
@@ -37,7 +37,7 @@ public class ImageResizer {
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
-    public Bitmap decodeSampleBitmapFromFileDescriptor(FileDescriptor fd, int reqWidth, int reqHeight) {
+    public static Bitmap decodeSampleBitmapFromFileDescriptor(FileDescriptor fd, int reqWidth, int reqHeight) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeFileDescriptor(fd, null, options);
@@ -47,7 +47,7 @@ public class ImageResizer {
     }
 
     //计算出图片的缩放比例
-    public int calculateSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
+    public static int calculateSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {
         if (reqWidth == 0 || reqHeight == 0) {
             return 1;
         }
